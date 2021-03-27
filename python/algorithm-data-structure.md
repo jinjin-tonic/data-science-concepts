@@ -301,7 +301,6 @@ class TreasureBox:
 ### 19. Know what must be true of values in a binary search tree, and be able to identify (manually) if one is valid.
 
 ## True/False Questions
-### Lecture 1
 Assume Algorithm A runs in 𝑂(𝑛) time and Algorithm B runs in 𝑂(sqrt(n))  time.
 
 1. Running Algorithm A will take longer than running Algorithm B. (F, but not 100% False)
@@ -320,48 +319,47 @@ Assume Algorithm A runs in 𝑂(𝑛) time and Algorithm B runs in 𝑂(sqrt(n))
 6. To get the total memory used by an instance of a class, it is sufficient to call getsizeof on all the Python objects contained in self (F)
 - No, `getsizeof` only calculate the size of the container. 
 
-
-1. Searching for a key in a `dict` takes $O(1)$ time, but searching for a value takes $O(n)$. (T)
+7. Searching for a key in a `dict` takes $O(1)$ time, but searching for a value takes $O(n)$. (T)
 - Searching for a value without the key corresponding to the value will take O(n) since we have to iterate through the whole data. 
 
-2. The elements of a `set` are maintained in sorted order for fast searching. (F)
+8. The elements of a `set` are maintained in sorted order for fast searching. (F)
 - `set` is unsorted. It uses a hash table. 
 
-3. The best sorting algorithms run in $O(n)$ time. (F)
+9. The best sorting algorithms run in $O(n)$ time. (F)
 - No, it's O(nlogn).
 
-4. If you hash two different Python objects, you will always get two different hashes. (F)
+10. If you hash two different Python objects, you will always get two different hashes. (F)
 - Not always. It might happen to be the same hash value.
 
-5. If I have to search inside a list $1000$ times, it is better to first sort the list and then use binary search, rather than just using linear search. (Most of the time T)
+11. If I have to search inside a list $1000$ times, it is better to first sort the list and then use binary search, rather than just using linear search. (Most of the time T)
 - sort list - O(nlogn) + binary search - O(logn)
 - linear search - O(n)
 
-6. A hash table with a fixed number of locations/buckets is $O(1)$ lookup regardless of the number of items it holds (F, but in some cases T)
+12. A hash table with a fixed number of locations/buckets is $O(1)$ lookup regardless of the number of items it holds (F, but in some cases T)
 
-1. Every recursive algorithm will have exactly one base case.  (F)
+13. Every recursive algorithm will have exactly one base case.  (F)
 - No, ex. fibonacci
 
-2. A recursive algorithm will never involve an instance of a function calling itself with the same arguments. (F)
+14. A recursive algorithm will never involve an instance of a function calling itself with the same arguments. (F)
 - It cannot call ifself with "exact the same arguments" --> the recursion never ends
 
-3. In recursion, the first instance of the function called is the last to complete/return. (T)
+15. In recursion, the first instance of the function called is the last to complete/return. (T)
 - In the end, the function will complete the first instance of the function called.
 
-4. The mergesort sorting algorithm can only be accomplished using recursion. (F)
+16. The mergesort sorting algorithm can only be accomplished using recursion. (F)
 - No, but the recursion solution is much clearer
 
-5. The complexity of a recursive function can be determined directly based on the number of recursive calls within it. (F)
+17. The complexity of a recursive function can be determined directly based on the number of recursive calls within it. (F)
 
-1. A `TreasureBox` contains a copy of itself. (F)
+18. A `TreasureBox` contains a copy of itself. (F)
 - No, it contains a copy of a different `TreasureBox` instance.
 
-2. If you have a `TreasureBox` with $n$ items, adding a new `TreasureBox` inside of all the others is $O(n)$. (T)
+19. If you have a `TreasureBox` with $n$ items, adding a new `TreasureBox` inside of all the others is $O(n)$. (T)
 - Yes, you need to insert n times.
 
-3. A tree is similar to the `TreasureBox`, except that you can have multiple treasure boxes inside each treasure box. (T)
+20. A tree is similar to the `TreasureBox`, except that you can have multiple treasure boxes inside each treasure box. (T)
 
-4. A binary tree of height 4 can have at most 8 leaves. (T)
+21. A binary tree of height 4 can have at most 8 leaves. (T)
 
-6. Balanced binary search trees are faster to use than unbalanced ones (T)
+22. Balanced binary search trees are faster to use than unbalanced ones (T)
 - For a well balanced tree, O(logn), but in worst unbalanced tree, O(n).
