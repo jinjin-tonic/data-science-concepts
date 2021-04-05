@@ -1,3 +1,122 @@
+## R basic 
+
+### Learning Objectives
+- Choose and use the appropriate readr::read_* function and function arguments to load a given rectangular, plain text data set into R
+    - read_csv
+    - read_delim("data/can_lang.tsv", delim = "\t", col_names = FALSE)
+    - or.. col_names = c('col', 'names')
+    - read_excel
+    - read_tsv
+
+- Use the assignment symbol, <-, to assign values to objects in R
+- Write a dataframe to a .csv file using readr::write_csv
+    - write_csv(data_frame, "folder/file_name.csv")
+- Use readr::read_csv to bring data from standard comma separated value (.csv) files into R
+- Recall and use the following dplyr functions and operators for their intended data wrangling tasks:
+    - select
+    - filter
+    - mutate
+    - arrange
+    - desc
+    - slice (select row) (getting a single value)
+    ```
+    gapminder %>% 
+    arrange(desc(lifeExp)) %>% 
+    slice(1) %>% 
+    pull(lifeExp)
+    ```
+    - pull
+    - %in%
+    `filter(gapminder, country %in% c("Mexico", "United States", "Canada"))`
+- Use the pipe operator, %>%, to combine two or more functions
+- Define the term “tidy data”
+    - each row = observation
+    - each column = variable (or attribute)
+    - each value is a single cell
+    - column header should be variable names(grouping together), not values.
+- Discuss the advantages and disadvantages of the tidy data format
+    - Tidy data is particularly well suited for vectorised programming languages like R, because the layout ensures that values of different variables from the same observation are always paired. 
+    - The big problem with this definition is the last word: visualize. Tidy data is extremely difficult to visualize. More traditional table formats are often superior.
+- Use tidyr::pivot_wider & tidyr::pivot_longer in R to make untidy data tidy
+    - `pivot_longer(col_start:col_end, names_to = "new_column_for_names", values_to = "new_column_for_values")`
+    - `pivot_wider(names_from = 'col_name_you_want_to_make_name', values_from = 'col_name_you_want_to_make_value')`
+
+### Learning Objectives
+- Explain how the assignment symbol, <- differs from = in R
+- Create in R, and define and differentiate in English, the below listed key datatypes in R:
+    - logical, numeric, character and factor vectors
+    - lists
+    - data frames and tibbles: data frames have rows as observations, columns as variables, which are vectors (subtype of lists)
+- Use R to determine the type and structure of an object
+    - character → double → integer → logical (hierarchy for coercion)
+- Explain the distinction between names and values, and when R will copy an object.
+    - copy-on-modify: when you modify a vector, it copies the original vector and then modify the vector. Vectors are essentially immutable. If you change one element of the vector, you have to copy the whole thing to update it
+    - However, if an object has a single name bound to it, R will modify it in place: `v <- c(1,2,3) then v[[3]] <- 4`
+
+- Use the three subsetting operators, `[[`, `[`, and `$`, to subset single and multiple elements from vectors and data frames, lists and matrices
+
+| Operator | Example use       | What it returns                                                        |
+|----------|-------------------|------------------------------------------------------------------------|
+| [        | mtcars[1:10, 2:4] | rows 1-10 for columns 2-4 of the data frame, as a data frame           |
+| [        | mtcars[1:10, ]    | rows 1-10 for all columns of the data frame, as a data frame           |
+| [        | mtcars[1]         | the first column of the data frame, as a data frame                    |
+| [[       | mtcars[[1]]       | the first column of the data frame, as a vector                        |
+| $        | mtcars$cyl        | the column the corresponds to the name that follows the $, as a vector |
+
+- Compute numeric and boolean values using their respective types and operations
+
+### Learning Objectives
+- Tibble vs Data frame
+    - In RStudio, tibbles only output the first 10 rows
+    - When you numerically subset a data frame to 1 column, you get a vector. However, when you numerically subset a tibble you still get a tibble back.
+- Manipulate dates and times using the `{lubridate}` package
+    - today()
+    - now()
+    - ymd, mdy, dmy, .. ()
+    - make_date, make_datetime
+- Be able to modify strings in a data frame using regular expressions and the `{stringr}` package
+    - If you want to operate on data frames, you will need to use these functions inside of data frame/tibble functions, like filter and mutate.
+    - str_detect(vector, "pattern")
+    - str_subset(vector, "pattern") : keep only the matching elements (cf. str_sub: substrings)
+    - str_split(my_fruit, " ") : split string on a delimiter (returns list)
+    - str_c : collapse
+    - str_replace(data, "A", "B") : Replace "A" to "B"
+- Cast categorical columns in a data frame as factors when appropriate, and manipulate factor levels as needed in preparation for data visualisation and statistical analysis (using base R and `{forcats}` package functions)
+    - as.factor(dataframe$column), factor()
+    - nlevels()
+    - fct_drop()
+    - levels()
+    - fct_infreq()
+    - fct_rev()
+    - fct_reorder(gapminder$country, gapminder$lifeExp) : order country by lifeExp
+    - fct_relevel("Asia", "Africa")
+
+### Learning Objectives
+- Compare and contrast mutating joins, filtering joins and set operations
+    - inner: return all rows from x where there are matching values in y, and all columns from x and y. All combinations are retruned.
+    - semi: return all rows from x where there are matching values in y, keeping just columns from x. No duplicate.
+    - left: return all rows from x(even though there is no matching with y), and all columns from x and y. All combinations, missing values are returned.
+    - anti: return all rows from x where there are not matching values in y, keeping just columns from x.
+    - full: return all rows and all columns from both x and y. Not matching values -> NA. 
+- Choose the appropriate two table `dplyr` function based on the type of join desired between two data frames, and use it in R to obtained the desired data frame from joining two tables
+- Write conditional statements in R with `if`, `else if` and `else` to run different code depending on the input
+- Write for loops in R to repeatedly run code
+    ```
+    for (i in seq_along(sequence)){
+        print(sequence[i]^2)
+    }
+
+    if (a > b) {
+        print("Something")
+    } else if (a < b) {
+        print("Something else")
+    } else {
+        print("Another thing!")
+    }
+    ```
+
+
+
 
 ## {dplyr}
 ### Explain what a grouped data frame is, and how it can be used
